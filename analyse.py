@@ -6,11 +6,7 @@ def isolateur(liste,x,y):
                 sujet[i+4+j*3]=liste[x+i][y+j]
             except:
                 pass
-    return sujet
-
-
-   #sujet=liste[x-1][slice(y-1,y+2)]+liste[x][slice(y,y+2)]+liste[x+1][slice(y,y+2)]
-    return sujet
+    return sujet#sous la forme [x,x,x,x,x,x,x,x,x]
 
 def traitement(liste):
     compteurcell=0
@@ -26,7 +22,7 @@ def traitement(liste):
     elif liste[4]==1 and (compteurcell<3 or compteurcell>4):
         etat=-1
 
-    return etat
+    return etat#-1=cellule qui meurt 1= nouvelle cellule 0=rien ne se passe
 
 def analyse(liste):
     liste2=[]
@@ -44,5 +40,5 @@ test=[]
 for i in range(50):
     test.append([])
     for j in range(50):
-        test[i].append(0)
+        test[i].append(round(random())
         
