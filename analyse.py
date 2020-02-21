@@ -33,7 +33,7 @@ def analyse(liste):
             etat=traitement(a)
             liste2[i].append(liste[i][j]+etat)
 
-    return liste2
+    return liste2#renvoie la liste à jour
             
 from random import random
 test=[]
