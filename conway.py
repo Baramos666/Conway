@@ -4,7 +4,7 @@ import random
 from time import sleep
 from analyse import *
 
-
+grid=[]
 
 
 
@@ -19,26 +19,10 @@ class conwayButton(Button):
             liste[x*10+y]='1'
         else :
             liste[x*10+y]='0'
-
-        print("updated",x,y,id(self))
+        grid=liste
 
     def command():
         Button.command()
-
-NOM_BOUTONS =(
-    "x00","x10","x20","x30","x40","x50","x60","x70","x80","x90",
-    "x01","x11","x21","x31","x41","x51","x61","x71","x81","x91",
-    "x02","x12","x22","x32","x42","x52","x62","x72","x82","x92",
-    "x03","x13","x23","x33","x43","x53","x63","x73","x83","x93",
-    "x04","x14","x24","x34","x44","x54","x64","x74","x84","x94",
-    "x05","x15","x25","x35","x45","x55","x65","x75","x85","x95",
-    "x06","x16","x26","x36","x46","x56","x66","x76","x86","x96",
-    "x07","x17","x27","x37","x47","x57","x67","x77","x87","x97",
-    "x08","x18","x28","x38","x48","x58","x68","x78","x88","x98",
-    "x09","x19","x29","x39","x49","x59","x69","x79","x89","x99")
-dictionnaireNoms={}
-
-
 
 def randomgrid(filename):#génère 100 booléens aléatoires et l'inscrit sur un fichier
     f=open(filename,"w+")
@@ -101,9 +85,10 @@ def gridcreation(liste,frame,reset=1):#crée une grille 10x10 à partir d'une li
             widget.destroy()
     for i in range (10):
         for j in range (10):
-            locals()["conway_button_"+str(i)+str(j)]=conwayButton(frame,x=i,y=j,text=liste[i*10+j])
-            locals()["conway_button_"+str(i)+str(j)]['command']=lambda : print("TODO")
-            locals()["conway_button_"+str(i)+str(j)].grid(row=i,column=j)
+            b=[i,j]
+            a=locals()["conway_button_"+str(i)+str(j)]=conwayButton(frame,x=i,y=j,text=liste[i*10+j])
+            a['command']=lambda b=b: a.updateButton(b[0],b[1],liste)
+            a.grid(row=i,column=j)
             #print(i,j)
             
     frame.update()    
