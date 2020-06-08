@@ -1,6 +1,10 @@
 from tkinter import *
 import os
-
+def init():
+  fenetre3.destroy()
+  fenetre2.destroy()
+  fenetre.destroy()
+  conway()
 def destruction2():
   fenetre3.destroy()
 
@@ -14,8 +18,8 @@ def connexion_effectue():
   global fenetre3
   fenetre3 = Toplevel(fenetre)
   fenetre3.geometry("150x100")
-  Label(fenetre3, text = "connexion effectué").pack()
-  Button(fenetre3, text = "OK", command =destruction2).pack()
+  Label(fenetre3, text = "connexion effectuée").pack()
+  Button(fenetre3, text = "OK", command =init).pack()
 
 def motdepasse_non_reconnu():
   global fenetre4
@@ -60,6 +64,7 @@ def connexion_verification():
     verification = file1.read().splitlines()
     if motdepasse1 in verification:
         connexion_effectue()
+        
     else:
         motdepasse_non_reconnu()
 
@@ -129,6 +134,5 @@ def premiere_fenetre():
   Button(text = "Enregistrement",height = "2", width = "30", command = enregistrement).pack()
   fenetre.mainloop()
 
-premiere_fenetre()
 
   

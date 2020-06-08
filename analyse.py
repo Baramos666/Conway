@@ -12,7 +12,7 @@ def traitement(liste):
     compteurcell=0
     for i in liste:
         try:
-            compteurcell+=i
+            compteurcell+=int(i)
         except:
             pass
     etat=0
@@ -31,7 +31,7 @@ def analyse(liste):
         for j in range (len (liste[i])):
             a=isolateur(liste,i,j)
             etat=traitement(a)
-            liste2[i].append(liste[i][j]+etat)
+            liste2[i].append(str(int(liste[i][j])+etat))
 
     return liste2#renvoie la liste à jour
             
@@ -40,5 +40,5 @@ test=[]
 for i in range(50):
     test.append([])
     for j in range(50):
-        test[i].append(round(random())
-        
+        test[i].append(str(round(random())))
+a=analyse(test)
